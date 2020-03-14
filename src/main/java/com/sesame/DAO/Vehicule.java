@@ -2,7 +2,6 @@ package com.sesame.DAO;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -34,77 +33,103 @@ public class Vehicule implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="code_Client")
 	private  Client client;
-	@OneToMany
+	@OneToOne
 	   @JoinColumn(name="num_rendezVous")
-	   private List<RendezVous>  rendezVous;
+	   private RendezVous rendezVous;
 	
 	@ManyToOne
 	@JoinColumn(name="codeMarque")
 	private  Marque marque;
+
 	public Long getIdV() {
 		return IdV;
 	}
+
 	public void setIdV(Long idV) {
 		IdV = idV;
 	}
+
 	public String getMatricule() {
 		return matricule;
 	}
+
 	public void setMatricule(String matricule) {
 		this.matricule = matricule;
 	}
+
 	public String getTypeV() {
 		return typeV;
 	}
+
 	public void setTypeV(String typeV) {
 		this.typeV = typeV;
 	}
+
 	public Date getDateSortie() {
 		return dateSortie;
 	}
+
 	public void setDateSortie(Date dateSortie) {
 		this.dateSortie = dateSortie;
 	}
+
 	public int getAge() {
 		return age;
 	}
+
 	public void setAge(int age) {
 		this.age = age;
 	}
+
 	public String getKilometrage() {
 		return kilometrage;
 	}
+
 	public void setKilometrage(String kilometrage) {
 		this.kilometrage = kilometrage;
 	}
+
 	public int getNbCylindre() {
 		return nbCylindre;
 	}
+
 	public void setNbCylindre(int nbCylindre) {
 		this.nbCylindre = nbCylindre;
 	}
-	public Client getClient() {
+
+	public Client getClients() {
 		return client;
 	}
-	public void setClient(Client client) {
-		this.client = client;
+
+	public void setClients(Client clients) {
+		this.client = clients;
 	}
 
-	public List<RendezVous> getRendezVous() {
+	public RendezVous getRendezVous() {
 		return rendezVous;
 	}
-	public void setRendezVous(List<RendezVous> rendezVous) {
+
+	public void setRendezVous(RendezVous rendezVous) {
 		this.rendezVous = rendezVous;
 	}
+
 	public Marque getMarque() {
 		return marque;
 	}
+
 	public void setMarque(Marque marque) {
 		this.marque = marque;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Vehicule [IdV=" + IdV + ", matricule=" + matricule + ", typeV=" + typeV + ", dateSortie=" + dateSortie
+				+ ", age=" + age + ", kilometrage=" + kilometrage + ", nbCylindre=" + nbCylindre + ", clients="
+				+ client + ", rendezVous=" + rendezVous + ", marque=" + marque + "]";
+	}
+
 	public Vehicule(Long idV, String matricule, String typeV, Date dateSortie, int age, String kilometrage,
-			int nbCylindre, Client client, Marque marque) {
+			int nbCylindre, Client clients, RendezVous rendezVous, Marque marque) {
 		super();
 		IdV = idV;
 		this.matricule = matricule;
@@ -113,19 +138,16 @@ public class Vehicule implements Serializable {
 		this.age = age;
 		this.kilometrage = kilometrage;
 		this.nbCylindre = nbCylindre;
-		this.client = client;
+		this.client = clients;
+		this.rendezVous = rendezVous;
 		this.marque = marque;
 	}
-	@Override
-	public String toString() {
-		return "Vehicule [IdV=" + IdV + ", matricule=" + matricule + ", typeV=" + typeV + ", dateSortie=" + dateSortie
-				+ ", age=" + age + ", kilometrage=" + kilometrage + ", nbCylindre=" + nbCylindre + "]";
-	}
+
 	public Vehicule() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
 
 	
 }

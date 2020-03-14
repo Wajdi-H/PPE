@@ -1,7 +1,7 @@
 package com.sesame.DAO;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -22,7 +22,7 @@ public class Marque implements Serializable{
 	private String gamme; 
 	
 	  @OneToMany(mappedBy="marque", cascade=CascadeType.ALL)
-	  private List<Vehicule> Vehicules;
+	  private Collection<Vehicule> Vehicules;
 
 	public Long getIdM() {
 		return IdM;
@@ -56,25 +56,21 @@ public class Marque implements Serializable{
 		this.gamme = gamme;
 	}
 
-	public List<Vehicule> getVehicules() {
+	public Collection<Vehicule> getVehicules() {
 		return Vehicules;
 	}
 
-	public void setVehicules(List<Vehicule> vehicules) {
+	public void setVehicules(Collection<Vehicule> vehicules) {
 		Vehicules = vehicules;
 	}
 
-	@Override
-	public String toString() {
-		return "Marque [IdM=" + IdM + ", nom=" + nom + ", modele=" + modele + ", gamme=" + gamme + "]";
-	}
-
-	public Marque(Long idM, String nom, String modele, String gamme) {
+	public Marque(Long idM, String nom, String modele, String gamme, Collection<Vehicule> vehicules) {
 		super();
 		IdM = idM;
 		this.nom = nom;
 		this.modele = modele;
 		this.gamme = gamme;
+		Vehicules = vehicules;
 	}
 
 	public Marque() {
@@ -82,6 +78,12 @@ public class Marque implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-
+	@Override
+	public String toString() {
+		return "Marque [IdM=" + IdM + ", nom=" + nom + ", modele=" + modele + ", gamme=" + gamme + ", Vehicules="
+				+ Vehicules + "]";
+	}
+	  
+	  
 
 }
