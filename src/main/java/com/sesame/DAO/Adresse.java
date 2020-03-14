@@ -86,16 +86,15 @@ public class Adresse implements Serializable{
 		this.centre = centre;
 	}
 
-	public Adresse(Long idAdr, String ville, String region, String rue, int codePostal, Client client,
-			CentreVisite centre) {
+
+
+	public Adresse(Long idAdr, String ville, String region, String rue, int codePostal) {
 		super();
 		IdAdr = idAdr;
 		this.ville = ville;
 		this.region = region;
 		this.rue = rue;
 		this.codePostal = codePostal;
-		this.client = client;
-		this.centre = centre;
 	}
 
 	public Adresse() {
