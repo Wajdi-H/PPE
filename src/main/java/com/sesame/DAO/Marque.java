@@ -22,9 +22,8 @@ public class Marque implements Serializable{
 	private String modele; 
 	private String gamme; 
 	
-	  @OneToMany(mappedBy = "", cascade=CascadeType.ALL)
-	  
-	  private Collection<Vehicule> Vehicules;
+	@OneToMany(mappedBy="marque", cascade=CascadeType.ALL)
+	  private List<Vehicule> Vehicules;
 
 	public Long getIdM() {
 		return IdM;
