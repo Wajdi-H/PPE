@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import java.lang.Math; 
 
 
 @Entity
@@ -54,7 +55,24 @@ public class Vehicule implements Serializable {
 	}
 
 	public void setMatricule(String matricule) {
-		this.matricule = matricule;
+	 
+	 int pos = matricule.indexOf('T');
+	int t =1;
+
+     String patie1 =matricule.subSequence(0,pos).toString();
+     String patie2 =matricule.subSequence(pos+2,matricule.length()).toString();
+          for(int i =0 ;i< patie1.length();i++)
+        	  {if((patie1.charAt(i)-48>=0)&&(patie1.charAt(i)-48<=9))
+        		  t*=1;
+        		  else
+        			  t*=0;}
+          for(int i =0 ;i< patie2.length();i++)
+    	  {if((patie2.charAt(i)-48>=0)&&(patie2.charAt(i)-48<=9))
+    		  t*=1;
+    		  else
+    			  t*=0;}
+          if (t==1)
+		      this.matricule = matricule;
 	}
 
 	public String getTypeV() {
