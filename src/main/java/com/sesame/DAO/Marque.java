@@ -2,6 +2,7 @@ package com.sesame.DAO;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -13,17 +14,17 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Marque")
-public class Marque implements Serializable{
+@Table(name = "Marque")
+public class Marque implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long IdM; 
-	private String nom; 
-	private String modele; 
-	private String gamme; 
-	
-	@OneToMany(mappedBy="marque", cascade=CascadeType.ALL)
-	  private List<Vehicule> Vehicules;
+	private Long IdM;
+	private String nom;
+	private String modele;
+	private String gamme;
+
+	@OneToMany(mappedBy = "marque", cascade = CascadeType.ALL)
+	private List<Vehicule> Vehicules;
 
 	public Long getIdM() {
 		return IdM;
@@ -57,15 +58,15 @@ public class Marque implements Serializable{
 		this.gamme = gamme;
 	}
 
-	public Collection<Vehicule> getVehicules() {
+	public List<Vehicule> getVehicules() {
 		return Vehicules;
 	}
 
-	public void setVehicules(Collection<Vehicule> vehicules) {
+	public void setVehicules(List<Vehicule> vehicules) {
 		Vehicules = vehicules;
 	}
 
-	public Marque(Long idM, String nom, String modele, String gamme, Collection<Vehicule> vehicules) {
+	public Marque(Long idM, String nom, String modele, String gamme, List<Vehicule> vehicules) {
 		super();
 		IdM = idM;
 		this.nom = nom;
@@ -84,7 +85,6 @@ public class Marque implements Serializable{
 		return "Marque [IdM=" + IdM + ", nom=" + nom + ", modele=" + modele + ", gamme=" + gamme + ", Vehicules="
 				+ Vehicules + "]";
 	}
-	  
-	  
 
+	
 }

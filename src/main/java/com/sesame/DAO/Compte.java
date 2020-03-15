@@ -10,19 +10,18 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="Compte")
-public class Compte implements Serializable{
+@Table(name = "Compte")
+public class Compte implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
-	private String login ; 
-	private String mdp ; 
-	
-	 @OneToOne
-	   @JoinColumn(name="num_client")
-	   private Client client;
+	private String login;
+	private String mdp;
+
+	@OneToOne
+	@JoinColumn(name = "num_client")
+	private Client client;
 
 	public Long getId() {
 		return Id;
@@ -73,8 +72,5 @@ public class Compte implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	 
-	 
-	
 
 }

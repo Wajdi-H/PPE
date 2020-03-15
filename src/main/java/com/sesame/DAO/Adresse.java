@@ -11,23 +11,23 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Adresse")
-public class Adresse implements Serializable{
+@Table(name = "Adresse")
+public class Adresse implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	private Long IdAdr;
-	private String ville; 
-	private String region; 
-	private String rue; 
-	private int codePostal ;
-	 @OneToOne
-	   @JoinColumn(name="num_client")
-	   private Client client;
-	 
-	 @OneToOne
-	   @JoinColumn(name="num_centre")
-	   private CentreVisite centre;
+
+	private String ville;
+	private String region;
+	private String rue;
+	private int codePostal;
+	@OneToOne
+	@JoinColumn(name = "num_client")
+	private Client client;
+
+	@OneToOne
+	@JoinColumn(name = "num_centre")
+	private CentreVisite centre;
 
 	public Long getIdAdr() {
 		return IdAdr;
@@ -108,8 +108,4 @@ public class Adresse implements Serializable{
 				+ codePostal + ", client=" + client + ", centre=" + centre + "]";
 	}
 
-
-	
-	
-	
 }

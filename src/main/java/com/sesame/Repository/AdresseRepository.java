@@ -9,17 +9,20 @@ import org.springframework.stereotype.Repository;
 
 import com.sesame.DAO.Adresse;
 
-public interface AdresseRepository extends JpaRepository<Adresse, Long >{
-public List<Adresse> findByVille(String ville );
-	// pageable  : objet ou on va définit le taille d'une page
-	public Page<Adresse> findByVille(String ville, Pageable p );
+public interface AdresseRepository extends JpaRepository<Adresse, Long> {
 	
+	
+	public List<Adresse> findByVille(String ville);
+
+	// pageable : objet ou on va définit le taille d'une page
+	public Page<Adresse> findByVille(String ville, Pageable p);
+
 	public List<Adresse> findByVilleContaining(String a);
-	
-	public List<Adresse> findByRegion(String region); 
-	
-	public List<Adresse> findByRue(String rue); 
-	public List<Adresse> findByCodePostal(int code); 
-	
+
+	public List<Adresse> findByRegion(String region);
+
+	public List<Adresse> findByRue(String rue);
+
+	public List<Adresse> findByCodePostal(int code);
 
 }

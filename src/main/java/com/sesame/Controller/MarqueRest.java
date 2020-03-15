@@ -1,7 +1,6 @@
-package com.sesame.Rest;
+package com.sesame.Controller;
 
 import java.util.Collection;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,31 +14,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sesame.DAO.Client;
-import com.sesame.MetierInterface.ClientMetierInterface;
-
+import com.sesame.DAO.Marque;
+import com.sesame.Interface.ClientMetierInterface;
+import com.sesame.Interface.MarqueMetierInterface;
 
 @RestController
-@RequestMapping("/Client")
+@RequestMapping("/marque")
 @CrossOrigin("*")
-public class ClientRest {
-
-	@Autowired
-	private  ClientMetierInterface CF;
+public class MarqueRest {
+	
+	
+	@Autowired(required = false)
+	private  MarqueMetierInterface CF;
 	
 	
 	@PostMapping("/add") 
-	public void save(@RequestBody Client client)
+	public void save(@RequestBody Marque marque)
 	
-	{	CF.add(client);
+	{	CF.add(marque);
 	}
 	
 	@GetMapping("/get")
-	public Collection<Client> findALL()
+	public Collection<Marque> findALL()
 	{
 		return CF.getAll();
 	}
 	@GetMapping("/get/{id}")
-	public Client findById(@PathVariable Long id)
+	public Marque findById(@PathVariable Long id)
 	{
 		return CF.getId(id);
 	}
@@ -52,11 +53,12 @@ public class ClientRest {
 	}
 	@PutMapping("edit/{id}")  // modification
 
-	public void update(@PathVariable Long id , @RequestBody Client client)
+	public void update(@PathVariable Long id , @RequestBody Marque marque)
 	
 	{
-		client.setIdC(id);
-		CF.add(client)	;
+		marque.setIdM(id);
+		CF.add(marque)	;
 	}
 	
 }
+

@@ -7,12 +7,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import com.sesame.DAO.CentreVisite;
+import com.sesame.DAO.ChefCouloir;
+import com.sesame.DAO.Compte;
 import com.sesame.DAO.Couloir;
 
 
 
 public interface CouloirRepository extends JpaRepository<Couloir, Long >{
 	
-
 
 }
