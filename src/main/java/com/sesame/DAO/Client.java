@@ -37,7 +37,15 @@ public class Client implements Serializable {
 	}
 
 	public void setNomC(String nomC) {
-		this.nomC = nomC;
+		int tt=1;
+		if(nomC.length()<=5)
+			tt*=0;
+		for(int i =0 ;i<nomC.length();i++) {
+			 if((nomC.charAt(i)<65)||(nomC.charAt(i)>122)||((nomC.charAt(i)<96)&&(nomC.charAt(i)>91)))
+		            tt*=0;
+			 }
+			 if(tt==1)
+				 this.nomC = nomC;
 	}
 
 	public Long getIdC() {
@@ -49,10 +57,20 @@ public class Client implements Serializable {
 	}
 
 	public String getPrenomC() {
+		
+	
 		return prenomC;
 	}
 
 	public void setPrenomC(String prenomC) {
+		int t=1;
+		if(prenomC.length()<=5)
+			t*=0;
+		for(int i =0 ;i<nomC.length();i++) {
+			 if((prenomC.charAt(i)<65)||(prenomC.charAt(i)>122)||((prenomC.charAt(i)<96)&&(prenomC.charAt(i)>91)))
+		           t*=0;
+			 }
+			 if(t==1)
 		this.prenomC = prenomC;
 	}
 
@@ -61,7 +79,19 @@ public class Client implements Serializable {
 	}
 
 	public void setCINC(String cINC) {
-		CINC = cINC;
+		int t=1;
+		if(cINC.length() != 8)
+			t*=0;
+		for(int i =0 ;i<8;i++) {
+			 if((cINC.charAt(i)-48<=0)&&(cINC.charAt(i)-48>=9))
+       		  {    t*=0;
+			       break ;
+			       }
+			        }
+		
+		 
+		if(t==1)
+		     this.CINC = cINC;
 	}
 
 	public Adresse getAdresse() {
