@@ -2,6 +2,7 @@ package com.sesame.DAO;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -61,11 +62,11 @@ public class Marque implements Serializable{
 		return Vehicules;
 	}
 
-	public void setVehicules(Collection<Vehicule> vehicules) {
+	public void setVehicules(List<Vehicule> vehicules) {
 		Vehicules = vehicules;
 	}
 
-	public Marque(Long idM, String nom, String modele, String gamme, Collection<Vehicule> vehicules) {
+	public Marque(Long idM, String nom, String modele, String gamme, List<Vehicule> vehicules) {
 		super();
 		IdM = idM;
 		this.nom = nom;
