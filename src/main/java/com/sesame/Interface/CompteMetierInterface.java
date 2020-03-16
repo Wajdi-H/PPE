@@ -1,4 +1,4 @@
-package com.sesame.MetierInterface;
+package com.sesame.Interface;
 
 import java.util.Collection;
 

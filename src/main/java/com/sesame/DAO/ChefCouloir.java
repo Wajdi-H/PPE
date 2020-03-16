@@ -11,17 +11,17 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ChefCouloir")
-public class ChefCouloir implements Serializable{
+@Table(name = "ChefCouloir")
+public class ChefCouloir implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long IdChef;
 	private String nomChef;
-	private String prenomChef ; 
-	
-	 @OneToOne
-	   @JoinColumn(name="num_couloir")
-	   private Couloir couloir;
+	private String prenomChef;
+
+	@OneToOne
+	@JoinColumn(name = "num_couloir")
+	private Couloir couloir;
 
 	public Long getIdChef() {
 		return IdChef;
@@ -73,9 +73,5 @@ public class ChefCouloir implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	 
-	
-	 
-	 
 
 }

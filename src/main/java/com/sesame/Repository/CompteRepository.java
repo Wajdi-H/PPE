@@ -13,15 +13,15 @@ import com.sesame.DAO.Compte;
 
 
 public interface CompteRepository  extends JpaRepository<Compte, Long > {
-public List<Compte> findByLogin(String login);
 	
-	// pageable  : objet ou on va définit le taille d'une page
-	public Page<Compte> findByLogin(String login, Pageable p );
 	
+	public List<Compte> findByLogin(String login);
+
+	// pageable : objet ou on va définit le taille d'une page
+	public Page<Compte> findByLogin(String login, Pageable p);
+
 	public List<Compte> findByLoginContaining(String a);
-	
-	public List<Compte> findByMdp(String mdp); 
-	
-	
+
+	public List<Compte> findByMdp(String mdp);
 
 }

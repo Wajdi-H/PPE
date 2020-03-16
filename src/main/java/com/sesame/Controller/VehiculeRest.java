@@ -1,4 +1,4 @@
-package com.sesame.Rest;
+package com.sesame.Controller;
 
 import java.util.Collection;
 
@@ -14,31 +14,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sesame.DAO.Client;
-import com.sesame.DAO.Marque;
-import com.sesame.MetierInterface.ClientMetierInterface;
-import com.sesame.MetierInterface.MarqueMetierInterface;
+import com.sesame.DAO.Vehicule;
+import com.sesame.Interface.ClientMetierInterface;
+import com.sesame.Interface.VehiculeMetierInterface;
 
 @RestController
-@RequestMapping("/Marque")
+@RequestMapping("/Vehicule")
 @CrossOrigin("*")
-public class MarqueRest {
-	@Autowired
-	private  MarqueMetierInterface CF;
+public class VehiculeRest {
+	
+	
+	
+	@Autowired(required = false)
+	private  VehiculeMetierInterface CF;
 	
 	
 	@PostMapping("/add") 
-	public void save(@RequestBody Marque marque)
+	public void save(@RequestBody Vehicule vehicule)
 	
-	{	CF.add(marque);
+	{	CF.add(vehicule);
 	}
 	
 	@GetMapping("/get")
-	public Collection<Marque> findALL()
+	public Collection<Vehicule> findALL()
 	{
 		return CF.getAll();
 	}
+	
 	@GetMapping("/get/{id}")
-	public Marque findById(@PathVariable Long id)
+	public Vehicule findById(@PathVariable Long id)
 	{
 		return CF.getId(id);
 	}
@@ -49,13 +53,14 @@ public class MarqueRest {
 	
 		CF.delete(id);
 	}
+	
 	@PutMapping("edit/{id}")  // modification
 
-	public void update(@PathVariable Long id , @RequestBody Marque marque)
+	public void update(@PathVariable Long id , @RequestBody Vehicule vehicule)
 	
 	{
-		marque.setIdM(id);
-		CF.add(marque)	;
+		vehicule.setIdV(id);
+		CF.add(vehicule)	;
 	}
 	
 }
