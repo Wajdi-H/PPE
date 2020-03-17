@@ -9,4 +9,6 @@ public interface MarqueMetierInterface {
 	public Marque getId(Long id);
 	public void delete(long id);
 	public Marque add (Marque M );
+	public Marque getnom(String name);
+	
 }

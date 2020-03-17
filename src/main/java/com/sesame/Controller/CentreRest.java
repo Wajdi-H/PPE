@@ -2,6 +2,7 @@ package com.sesame.Controller;
 
 import java.util.Collection;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,48 +14,40 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sesame.DAO.Client;
-import com.sesame.DAO.Marque;
+import com.sesame.DAO.Adresse;
+import com.sesame.DAO.CentreVisite;
 import com.sesame.DAO.Vehicule;
-import com.sesame.Interface.ClientMetierInterface;
-import com.sesame.Interface.MarqueMetierInterface;
+import com.sesame.Interface.AdresseMetierInterface;
+import com.sesame.Interface.CentreMetierInterface;
 import com.sesame.Interface.VehiculeMetierInterface;
 
 @RestController
-@RequestMapping("/Vehicule")
+@RequestMapping("/centre")
 @CrossOrigin("*")
-public class VehiculeRest {
-	
-	
-	
-	@Autowired(required = false)
-	private  VehiculeMetierInterface CF;
+public class CentreRest {
 	@Autowired
-	private MarqueMetierInterface MF ;
+	private  CentreMetierInterface CF;
 	@Autowired
-	private ClientMetierInterface CFC;
+	private AdresseMetierInterface ADR;
 	
 	
-	@PostMapping("/add/{idc}/{idm}") 
-	public void save(@RequestBody Vehicule vehicule, @PathVariable long idc, @PathVariable long idm )
 	
-	{	Client c = new Client();
-	   c=CFC.getId(idc);
-	   vehicule.setClient(c);
-		Marque m = new Marque();
-	      m=MF.getId(idm);
-	    vehicule.setMarque(m);
-		CF.add(vehicule);
+	@PostMapping("/add/{idadresse}") 
+	public void save(@RequestBody CentreVisite centreVisite,@PathVariable long id)
+	
+	{ Adresse ad = new Adresse();
+	  ad=ADR.getId(id);
+	  centreVisite.setAdresse(ad);
+		CF.add(centreVisite);
 	}
 	
 	@GetMapping("/get")
-	public Collection<Vehicule> findALL()
+	public Collection<CentreVisite> findALL()
 	{
 		return CF.getAll();
 	}
-	
 	@GetMapping("/get/{id}")
-	public Vehicule findById(@PathVariable Long id)
+	public CentreVisite findById(@PathVariable Long id)
 	{
 		return CF.getId(id);
 	}
@@ -65,15 +58,15 @@ public class VehiculeRest {
 	
 		CF.delete(id);
 	}
-	
 	@PutMapping("edit/{id}")  // modification
 
-	public void update(@PathVariable Long id , @RequestBody Vehicule vehicule)
+	public void update(@PathVariable Long id , @RequestBody CentreVisite centreVisite)
 	
 	{
-		vehicule.setIdV(id);
-		CF.add(vehicule)	;
+		centreVisite.setIdCentre(id);
+		CF.add(centreVisite)	;
 	}
 	
 }
+
 

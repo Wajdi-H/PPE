@@ -16,9 +16,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.sesame.DAO.CentreVisite;
 import com.sesame.DAO.RendezVous;
+import com.sesame.DAO.Vehicule;
+import com.sesame.Interface.CentreMetierInterface;
 import com.sesame.Interface.RendezVousMetierInterface;
+import com.sesame.Interface.VehiculeMetierInterface;
 
 @RestController
 @RequestMapping("/rendez-vous")
@@ -27,10 +30,22 @@ public class RendezVousRest {
 
 	@Autowired(required = false)
 	private RendezVousMetierInterface CF;
+	@Autowired
+	private VehiculeMetierInterface VF;
+	@Autowired
+	private CentreMetierInterface CVF;
+	
 
-	@PostMapping("/add")
-	public RendezVous save(@RequestBody RendezVous rdv) {
+	@PostMapping("/add/{idvehicule}/{idcentre}")
+	public RendezVous save(@RequestBody RendezVous rdv, @PathVariable long idv, @PathVariable long idc)
+	{
 		if (rdv != null) {
+			Vehicule vh= new Vehicule();
+			CentreVisite CV=new CentreVisite();
+			vh=VF.getId(idv);
+			CV=CVF.getId(idc);
+			rdv.setCentre(CV);
+			rdv.setVehicule(vh);
 			return CF.Add(rdv);
 		}
 		return null;

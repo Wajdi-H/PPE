@@ -26,6 +26,12 @@ public class MarqueMetierService implements MarqueMetierInterface {
 	public Marque getId(Long id) {
 		return urc.findById(id).get();
 	}
+	@Override
+	public Marque getnom(String name)
+	{
+		return urc.findByNom(name);
+	}
+
 
 	@Override
 	public void delete(long id) {

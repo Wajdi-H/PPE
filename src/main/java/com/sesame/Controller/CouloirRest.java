@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sesame.DAO.CentreVisite;
 import com.sesame.DAO.Couloir;
+import com.sesame.Interface.CentreMetierInterface;
 import com.sesame.Interface.CouloirMetierInterface;
 
 @RestController
@@ -26,10 +28,15 @@ public class CouloirRest {
 
 	@Autowired(required = false)
 	private CouloirMetierInterface COF;
+	@Autowired 
+	private CentreMetierInterface CF;
 
-	@PostMapping("/add")
-	public Couloir save(@RequestBody Couloir couloir) {
+	@PostMapping("/add/{idcentre}")
+	public Couloir save(@RequestBody Couloir couloir, @PathVariable Long  id) {
 		if (couloir != null) {
+			CentreVisite cv = new CentreVisite();
+			cv=CF.getId(id);
+			couloir.setCentre(cv);
 			return COF.add(couloir);
 		}
 		return null;

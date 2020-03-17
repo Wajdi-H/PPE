@@ -14,8 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import javax.persistence.Table; 
+import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Table;
 
@@ -34,15 +35,18 @@ public class Vehicule implements Serializable {
 	private int age;
 	private String kilometrage;
 	private int nbCylindre;
-
+    @JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "code_Client")
 	private Client client;
+	
 	@OneToMany(mappedBy = "vehicule", cascade = CascadeType.ALL)
 	private Collection<RendezVous> rdvs;
+    @JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "codeMarque")
 	private Marque marque;
+	
 	public Long getIdV() {
 		return IdV;
 	}

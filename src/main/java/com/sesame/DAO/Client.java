@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "Client")
 public class Client implements Serializable {
@@ -29,6 +31,7 @@ public class Client implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "num_compte")
 	private Compte compte;
+	@JsonIgnoreProperties
 	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
 	private Collection<Vehicule> Vehicules;
 

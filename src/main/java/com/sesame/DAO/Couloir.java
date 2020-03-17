@@ -11,13 +11,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "Couloir")
 public class Couloir implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
-
+    @JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "centre_id")
 	private CentreVisite centre;

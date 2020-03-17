@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "RDV")
 public class RendezVous implements Serializable {
@@ -24,11 +26,11 @@ public class RendezVous implements Serializable {
 	private Date dateR;
 
 	private String heure;
-
+    @JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "codevehicule")
 	private Vehicule vehicule;
-
+    @JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "codecentre")
 	private CentreVisite centre;

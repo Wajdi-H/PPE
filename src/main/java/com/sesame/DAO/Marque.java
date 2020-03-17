@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "Marque")
 public class Marque implements Serializable {
@@ -22,7 +24,7 @@ public class Marque implements Serializable {
 	private String nom;
 	private String modele;
 	private String gamme;
-
+	@JsonIgnoreProperties
 	@OneToMany(mappedBy = "marque", cascade = CascadeType.ALL)
 	private List<Vehicule> Vehicules;
 
