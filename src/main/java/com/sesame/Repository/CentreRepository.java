@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.sesame.DAO.CentreVisite;
 import com.sesame.DAO.Client;
 
-
+@Repository
 public interface CentreRepository extends JpaRepository<CentreVisite, Long > {
 public List<CentreVisite> findByNom(String nom);
 	

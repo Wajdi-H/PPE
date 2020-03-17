@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "CentreVisite")
 public class CentreVisite implements Serializable {
@@ -26,11 +28,12 @@ public class CentreVisite implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "num_Adr")
 	private Adresse adresse;
-
+    @JsonIgnoreProperties
 	@OneToMany(mappedBy = "centre", fetch = FetchType.LAZY)
 	private Collection<RendezVous> rdvs;
 
-	@OneToMany(mappedBy = "centre", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties
+    @OneToMany(mappedBy = "centre", cascade = CascadeType.ALL)
 	private Collection<Couloir> couloirs;
 
 	public Long getIdCentre() {

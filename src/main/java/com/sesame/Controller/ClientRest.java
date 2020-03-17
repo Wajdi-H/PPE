@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sesame.DAO.Adresse;
 import com.sesame.DAO.Client;
+import com.sesame.Interface.AdresseMetierInterface;
 import com.sesame.Interface.ClientMetierInterface;
 
 @RestController
@@ -25,10 +27,15 @@ public class ClientRest {
 
 	@Autowired(required = false)
 	private ClientMetierInterface CF;
+	@Autowired
+	private AdresseMetierInterface ADR;
 
-	@PostMapping("/add")
-	public Client save(@RequestBody Client client) {
+	@PostMapping("/add/{idadresse}")
+	public Client save(@RequestBody Client client, @PathVariable long id ) {
 		if (client != null) {
+			Adresse ad = new Adresse();
+			  ad=ADR.getId(id);
+			  client.setAdresse(ad);
 			return CF.add(client);
 		}
 		return null;
