@@ -30,15 +30,14 @@ public class ClientRest {
 	@Autowired
 	private AdresseMetierInterface ADR;
 
-	@PostMapping("/add/{idadresse}")
-	public Client save(@RequestBody Client client, @PathVariable long id ) {
-		if (client != null) {
-			Adresse ad = new Adresse();
-			  ad=ADR.getId(id);
-			  client.setAdresse(ad);
+	@PostMapping("/add")
+	public Client save(@RequestBody Client client) {
+		
+		
+			
 			return CF.add(client);
-		}
-		return null;
+		
+		
 	}
 
 	@GetMapping("/get")

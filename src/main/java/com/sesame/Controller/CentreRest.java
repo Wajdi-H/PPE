@@ -32,12 +32,13 @@ public class CentreRest {
 	
 	
 	
-	@PostMapping("/add/{idadresse}") 
-	public void save(@RequestBody CentreVisite centreVisite,@PathVariable long id)
+	@PostMapping(/*"/add/{idadresse}"*/) 
+	public void save(@RequestBody CentreVisite centreVisite)/*,@PathVariable long id)*/
 	
-	{ Adresse ad = new Adresse();
-	  ad=ADR.getId(id);
-	  centreVisite.setAdresse(ad);
+	{
+		/*
+		 * Adresse ad = new Adresse(); ad=ADR.getId(id); centreVisite.setAdresse(ad);
+		 */
 		CF.add(centreVisite);
 	}
 	

@@ -75,6 +75,8 @@ public class RendezVous implements Serializable {
 		this.centre = centre;
 	}
 
+
+
 	public RendezVous(Long idR, Date dateR, String heure, Vehicule vehicule, CentreVisite centre) {
 		super();
 		IdR = idR;

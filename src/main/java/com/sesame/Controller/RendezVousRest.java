@@ -36,19 +36,18 @@ public class RendezVousRest {
 	private CentreMetierInterface CVF;
 	
 
-	@PostMapping("/add/{idvehicule}/{idcentre}")
-	public RendezVous save(@RequestBody RendezVous rdv, @PathVariable long idv, @PathVariable long idc)
+	@PostMapping("/add/{idc}/{idv}")
+	public RendezVous save(@RequestBody RendezVous rdv,@PathVariable long idc,@PathVariable long idv)
 	{
-		if (rdv != null) {
-			Vehicule vh= new Vehicule();
-			CentreVisite CV=new CentreVisite();
-			vh=VF.getId(idv);
-			CV=CVF.getId(idc);
-			rdv.setCentre(CV);
-			rdv.setVehicule(vh);
-			return CF.Add(rdv);
-		}
-		return null;
+		Vehicule vh = new Vehicule();
+		CentreVisite CV = new CentreVisite();
+		vh = VF.getId(idv);
+		CV = CVF.getId(idc);
+		rdv.setCentre(CV);
+		rdv.setVehicule(vh);
+
+		return CF.Add(rdv);
+
 	}
 
 	@GetMapping("/get")
